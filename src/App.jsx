@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
+import { useAuth } from "./Components/Authorization/ProtectedRoute";
 import ProtectedRoute from "./Components/Authorization/ProtectedRoute";
 import Register from "./Components/Authorization/Register";
 import Login from "./Components/Authorization/Login";
@@ -16,16 +17,29 @@ import LandingPage from "./Pages/LandingPage";
 
 function App() {
   const [reviews, setReviews] = useState([]);
-  const [toggleLogin, setToggleLogin] = useState(false)
+  const [toggleLogin, setToggleLogin] = useState(false);
+  const { user } = useAuth();
 
   return (
     <>
-      <NavBar toggleLogin={toggleLogin} setToggleLogin={setToggleLogin}/>
+      <NavBar toggleLogin={toggleLogin} setToggleLogin={setToggleLogin} />
       <Routes>
-        <Route path="/" element={<LandingPage setToggleLogin={setToggleLogin} toggleLogin={toggleLogin}/>} />
-        <Route path="/login" element={<Login setToggleLogin={setToggleLogin} toggleLogin={toggleLogin} />} />
+        <Route
+          path="/"
+          element={
+            <LandingPage
+              setToggleLogin={setToggleLogin}
+              toggleLogin={toggleLogin}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <Login setToggleLogin={setToggleLogin} toggleLogin={toggleLogin} />
+          }
+        />
         <Route path="/register" element={<Register />} />
-        {/* Names of routes? */}
         <Route path="/teapots" element={<Index />} />
         <Route
           exact
