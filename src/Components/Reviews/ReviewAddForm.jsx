@@ -5,7 +5,8 @@ import {
   useParams,
   useOutletContext,
 } from "react-router-dom";
-const ReviewAddForm = ({ reviews, setReviews }) => {
+import Ratings from "./Ratings";
+const ReviewAddForm = ({ reviews, setReviews, rating, setRating }) => {
   const { teapot_id } = useParams();
   const { user } = useOutletContext();
   const navigate = useNavigate();
@@ -84,7 +85,8 @@ const ReviewAddForm = ({ reviews, setReviews }) => {
         </section>
         <section className="rating-input">
           <label htmlFor="rating">Rating:</label>
-          <input
+          <Ratings setRating={setRating} />
+          {/* <input
             id="rating"
             type="number"
             name="rating"
@@ -94,7 +96,7 @@ const ReviewAddForm = ({ reviews, setReviews }) => {
             value={newReview.rating}
             onChange={handleTextChange}
             required
-          />
+          /> */}
         </section>
         <section className="form-button-section">
           <input className="submit-button" type="submit" />

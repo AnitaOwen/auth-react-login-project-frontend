@@ -16,14 +16,18 @@ import LandingPage from "./Pages/LandingPage";
 
 function App() {
   const [reviews, setReviews] = useState([]);
-  const [toggleLogin, setToggleLogin] = useState(false)
+  const [toggleLogin, setToggleLogin] = useState(false);
+  const [rating, setRating] = useState();
 
   return (
     <>
-      <NavBar toggleLogin={toggleLogin} setToggleLogin={setToggleLogin}/>
+      <NavBar toggleLogin={toggleLogin} setToggleLogin={setToggleLogin} />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<Login setToggleLogin={setToggleLogin} />} />
+        <Route
+          path="/login"
+          element={<Login setToggleLogin={setToggleLogin} />}
+        />
         <Route path="/register" element={<Register />} />
         {/* Names of routes? */}
         <Route path="/teapots" element={<Index />} />
@@ -37,8 +41,28 @@ function App() {
         <Route element={<ProtectedRoute />}>
           {/* Place protected routes here */}
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/teapots/:teapot_id/new" element={<NewForm reviews={reviews} setReviews={setReviews} />}/>
-          <Route path="/teapots/:teapot_id/edit/:review_id" element={<EditForm reviews={reviews} setReviews={setReviews} />}/>
+          <Route
+            path="/teapots/:teapot_id/new"
+            element={
+              <NewForm
+                reviews={reviews}
+                setReviews={setReviews}
+                rating={rating}
+                setRating={setRating}
+              />
+            }
+          />
+          <Route
+            path="/teapots/:teapot_id/edit/:review_id"
+            element={
+              <EditForm
+                reviews={reviews}
+                setReviews={setReviews}
+                rating={rating}
+                setRating={setRating}
+              />
+            }
+          />
         </Route>
       </Routes>
     </>

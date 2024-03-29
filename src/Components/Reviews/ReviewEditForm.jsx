@@ -5,8 +5,9 @@ import {
   useOutletContext,
   Link,
 } from "react-router-dom";
+import Ratings from "./Ratings";
 
-const ReviewEditForm = ({ setReviews, reviews }) => {
+const ReviewEditForm = ({ setReviews, reviews, rating, setRating }) => {
   const { user } = useOutletContext();
   const navigate = useNavigate();
   const URL = import.meta.env.VITE_BASE_URL;
@@ -52,11 +53,7 @@ const ReviewEditForm = ({ setReviews, reviews }) => {
           return review.id === review_id;
         });
         copyReviewArray[indexUpdatedReview] = responseJSON;
-        console.log(copyReviewArray.reverse())
         setReviews(copyReviewArray);
-        // setReviews(copyReviewArray.reverse());
-
-
         setUpdatedReview({
           content: "",
           rating: "",
@@ -111,7 +108,8 @@ const ReviewEditForm = ({ setReviews, reviews }) => {
         </section>
         <section className="rating-input">
           <label htmlFor="rating">Rating:</label>
-          <input
+          <Ratings setRating={setRating} />
+          {/* <input
             id="rating"
             type="number"
             name="rating"
@@ -121,7 +119,7 @@ const ReviewEditForm = ({ setReviews, reviews }) => {
             value={updatedReview.rating}
             onChange={handleTextChange}
             required
-          />
+          /> */}
         </section>
         <section className="form-button-section">
           <input className="submit-button" type="submit" />
