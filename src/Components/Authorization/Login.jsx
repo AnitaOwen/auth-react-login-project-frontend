@@ -14,7 +14,6 @@ const Login = ({ setToggleLogin }) => {
   // This function is being used in two places. It can be extracted to a helpers.js file
 
   async function postFetch(user) {
-    console.log(`cookie: `, document.cookie);
     const csrfToken = document.cookie
       .split("; ")
       .find((row) => row.startsWith("XSRF-TOKEN="))

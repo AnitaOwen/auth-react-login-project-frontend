@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Ratings from "./Ratings";
 
-const ReviewEditForm = ({ setReviews, reviews, rating, setRating }) => {
+const ReviewEditForm = ({ setReviews, reviews }) => {
   const { user } = useOutletContext();
   const navigate = useNavigate();
   const URL = import.meta.env.VITE_BASE_URL;
@@ -20,9 +20,11 @@ const ReviewEditForm = ({ setReviews, reviews, rating, setRating }) => {
 
   const [updatedReview, setUpdatedReview] = useState({
     content: "",
-    rating: "",
+    rating: 0,
     updated_at: "",
   });
+
+  const [rating, setRating] = useState(0);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -79,7 +81,10 @@ const ReviewEditForm = ({ setReviews, reviews, rating, setRating }) => {
       credentials: "include",
     })
       .then((res) => res.json())
-      .then((data) => setUpdatedReview(data.review))
+      .then((data) => {
+        setUpdatedReview(data.review);
+        setRating(data.review.rating);
+      })
       .catch((error) => console.error(error));
   }, []);
 
@@ -108,7 +113,11 @@ const ReviewEditForm = ({ setReviews, reviews, rating, setRating }) => {
         </section>
         <section className="rating-input">
           <label htmlFor="rating">Rating:</label>
-          <Ratings setRating={setRating} />
+          <Ratings
+            review={updatedReview}
+            setReview={setUpdatedReview}
+            rating={rating}
+          />
           {/* <input
             id="rating"
             type="number"

@@ -17,7 +17,7 @@ import LandingPage from "./Pages/LandingPage";
 function App() {
   const [reviews, setReviews] = useState([]);
   const [toggleLogin, setToggleLogin] = useState(false);
-  const [rating, setRating] = useState();
+  // const [rating, setRating] = useState("");
 
   return (
     <>
@@ -47,8 +47,8 @@ function App() {
               <NewForm
                 reviews={reviews}
                 setReviews={setReviews}
-                rating={rating}
-                setRating={setRating}
+                // rating={rating}
+                // setRating={setRating}
               />
             }
           />
@@ -58,8 +58,8 @@ function App() {
               <EditForm
                 reviews={reviews}
                 setReviews={setReviews}
-                rating={rating}
-                setRating={setRating}
+                // rating={rating}
+                // setRating={setRating}
               />
             }
           />
