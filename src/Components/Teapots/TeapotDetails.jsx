@@ -9,7 +9,7 @@ const TeapotDetails = ({ reviews, setReviews }) => {
   const [teapot, setTeapot] = useState();
 
   const { teapot_id } = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`${URL}/api/teapots/${teapot_id}`)
@@ -18,7 +18,6 @@ const TeapotDetails = ({ reviews, setReviews }) => {
   }, [teapot_id]);
 
   return (
-
     <div>
       {teapot && (
         <div className="show-container">
@@ -27,19 +26,29 @@ const TeapotDetails = ({ reviews, setReviews }) => {
           </section>
           <section className="info-section">
             <h3>{teapot.name}</h3>
-            <p>Price: ${teapot.price}.00</p>
-            <p>Description: {teapot.description}</p>
-            <p>{teapot.material && `Material: ${teapot.material}`}</p>
-            {teapot.capacity && 
             <p>
-            Capacity: {teapot.capacity} cup
-            {teapot.capacity === 1 ? "" : "s"}
+              <span>Price:</span> ${teapot.price}.00
             </p>
-            }
-          <article className="btns">
-          <button onClick={() => navigate(`/teapots/${teapot_id}/new`)}>Add Review</button>
-          <button onClick={() => navigate(`/teapots`)}>Back</button>
-          </article>
+            <p>
+              <span>Description:</span> {teapot.description}
+            </p>
+            {teapot.material && (
+              <p>
+                <span>Material:</span> {teapot.material}
+              </p>
+            )}
+            {teapot.capacity && (
+              <p>
+                <span>Capacity:</span> {teapot.capacity} cup
+                {teapot.capacity === 1 ? "" : "s"}
+              </p>
+            )}
+            <article className="btns">
+              <button onClick={() => navigate(`/teapots/${teapot_id}/new`)}>
+                Add Review
+              </button>
+              <button onClick={() => navigate(`/teapots`)}>Back</button>
+            </article>
           </section>
         </div>
       )}

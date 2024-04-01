@@ -119,17 +119,6 @@ const ReviewEditForm = ({ setReviews, reviews }) => {
             rating={rating}
             setRating={setRating}
           />
-          {/* <input
-            id="rating"
-            type="number"
-            name="rating"
-            min="1"
-            max="5"
-            step="1"
-            value={updatedReview.rating}
-            onChange={handleTextChange}
-            required
-          /> */}
         </section>
         <section className="form-button-section">
           <input className="submit-button" type="submit" />
