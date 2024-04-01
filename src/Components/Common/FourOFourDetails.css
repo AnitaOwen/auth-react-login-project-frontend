@@ -14,3 +14,13 @@
   width: 400px;
   display: block;
 }
+
+.steam-container {
+  position: absolute;
+  top: 36%;
+  left: 41%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  animation-delay: 3s;
+  z-index: 1;
+}

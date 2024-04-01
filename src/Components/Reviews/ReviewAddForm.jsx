@@ -5,6 +5,7 @@ import {
   useParams,
   useOutletContext,
 } from "react-router-dom";
+import Ratings from "./Ratings";
 const ReviewAddForm = ({ reviews, setReviews }) => {
   const { teapot_id } = useParams();
   const { user } = useOutletContext();
@@ -15,11 +16,10 @@ const ReviewAddForm = ({ reviews, setReviews }) => {
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth() + 1; // Adding 1 because getMonth() returns zero-based month (0 for January)
   const day = currentDate.getDate();
-  // console.log(`${year}-${month}-${day}`);
 
   const [newReview, setNewReview] = useState({
     content: "",
-    rating: "",
+    rating: 0,
     user_id: user.id,
     created_at: `${year}-${month}-${day}`,
   });
@@ -33,12 +33,11 @@ const ReviewAddForm = ({ reviews, setReviews }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const csrfToken = document.cookie
       .split("; ")
       .find((row) => row.startsWith("XSRF-TOKEN="))
       .split("=")[1];
-    if (newReview.content.length > 0 && newReview.rating.length > 0) {
+    if (newReview.content.length > 0 && newReview.rating > 0) {
       fetch(`${URL}/api/teapots/${teapot_id}/reviews`, {
         method: "POST",
         headers: {
@@ -59,6 +58,7 @@ const ReviewAddForm = ({ reviews, setReviews }) => {
       navigate(`/teapots/${teapot_id}`);
     }
   };
+
   return (
     <div>
       {/* {children} */}
@@ -84,16 +84,10 @@ const ReviewAddForm = ({ reviews, setReviews }) => {
         </section>
         <section className="rating-input">
           <label htmlFor="rating">Rating:</label>
-          <input
-            id="rating"
-            type="number"
-            name="rating"
-            min="1"
-            max="5"
-            step="1"
-            value={newReview.rating}
-            onChange={handleTextChange}
-            required
+          <Ratings
+            review={newReview}
+            setReview={setNewReview}
+            rating={newReview.rating}
           />
         </section>
         <section className="form-button-section">

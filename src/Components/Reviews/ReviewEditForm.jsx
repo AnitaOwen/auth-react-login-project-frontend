@@ -5,6 +5,7 @@ import {
   useOutletContext,
   Link,
 } from "react-router-dom";
+import Ratings from "./Ratings";
 
 const ReviewEditForm = ({ setReviews, reviews }) => {
   const { user } = useOutletContext();
@@ -19,9 +20,11 @@ const ReviewEditForm = ({ setReviews, reviews }) => {
 
   const [updatedReview, setUpdatedReview] = useState({
     content: "",
-    rating: "",
+    rating: 0,
     updated_at: "",
   });
+
+  const [rating, setRating] = useState(0);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -52,11 +55,7 @@ const ReviewEditForm = ({ setReviews, reviews }) => {
           return review.id === review_id;
         });
         copyReviewArray[indexUpdatedReview] = responseJSON;
-        console.log(copyReviewArray.reverse())
         setReviews(copyReviewArray);
-        // setReviews(copyReviewArray.reverse());
-
-
         setUpdatedReview({
           content: "",
           rating: "",
@@ -82,7 +81,10 @@ const ReviewEditForm = ({ setReviews, reviews }) => {
       credentials: "include",
     })
       .then((res) => res.json())
-      .then((data) => setUpdatedReview(data.review))
+      .then((data) => {
+        setUpdatedReview(data.review);
+        setRating(data.review.rating);
+      })
       .catch((error) => console.error(error));
   }, []);
 
@@ -111,7 +113,13 @@ const ReviewEditForm = ({ setReviews, reviews }) => {
         </section>
         <section className="rating-input">
           <label htmlFor="rating">Rating:</label>
-          <input
+          <Ratings
+            review={updatedReview}
+            setReview={setUpdatedReview}
+            rating={rating}
+            setRating={setRating}
+          />
+          {/* <input
             id="rating"
             type="number"
             name="rating"
@@ -121,7 +129,7 @@ const ReviewEditForm = ({ setReviews, reviews }) => {
             value={updatedReview.rating}
             onChange={handleTextChange}
             required
-          />
+          /> */}
         </section>
         <section className="form-button-section">
           <input className="submit-button" type="submit" />

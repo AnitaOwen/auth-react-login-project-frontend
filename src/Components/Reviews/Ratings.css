@@ -1,0 +1,136 @@
+.rating-box {
+  margin-top: 20px;
+  width: 250px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  font-size: 40px;
+  line-height: 1;
+}
+
+.rating-box span {
+  white-space: nowrap;
+  width: 100%;
+}
+
+.rating-box span.active {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  color: gold;
+  width: 0;
+  transition: all 0.3s ease-out;
+}
+
+.rating-box input {
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  z-index: 10;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.rating-box input:nth-child(1) {
+  left: 0;
+}
+.rating-box input:checked:nth-child(1) ~ span.active {
+  width: 20%;
+}
+.rating-box input:nth-child(2) {
+  left: 20%;
+}
+.rating-box input:checked:nth-child(2) ~ span.active {
+  width: 40%;
+}
+.rating-box input:nth-child(3) {
+  left: 40%;
+}
+.rating-box input:checked:nth-child(3) ~ span.active {
+  width: 60%;
+}
+.rating-box input:nth-child(4) {
+  left: 60%;
+}
+.rating-box input:checked:nth-child(4) ~ span.active {
+  width: 80%;
+}
+.rating-box input:nth-child(5) {
+  left: 80%;
+}
+.rating-box input:checked:nth-child(5) ~ span.active {
+  width: 100%;
+}
+
+/* body {
+  background: #000;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+/* p {
+  font-family: "Rochester", cursive;
+  color: #fff;
+  text-align: center;
+  font-size: 60px;
+  margin-top: 0;
+} */
+
+/* .stars-container {
+  display: inline;
+  width: fit-content;
+  text-align: center;
+} */
+
+/* .rating {
+  margin-top: 0;
+  display: inline-block;
+  font-size: 0;
+  position: relative;
+  text-transform: capitalize;
+  padding: 0 50px 8%;
+  color: gray;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+.rating label {
+  display: inline-block;
+  float: right;
+  padding: 20px;
+  font-size: 50px;
+  cursor: pointer;
+}
+
+.rating label::before {
+  content: "\f006";
+  font-family: FontAwesome;
+  display: inline-block;
+  transition: 0.2s;
+  color: black;
+}
+
+.rating label:hover::before {
+  color: orange;
+}
+
+.rating label:hover ~ *::before {
+  color: orange;
+}
+
+.rating input:checked ~ label::before {
+  content: "\f005";
+  font-family: FontAwesome;
+  color: orange;
+  transform: rotate(0.2turn);
+  transition-delay: calc(0.1 * attr(data-idx integer));
+}
+
+.rating label:hover {
+  transform: rotate(-15deg) scale(1.3);
+  transition: all 0.2s;
+} */

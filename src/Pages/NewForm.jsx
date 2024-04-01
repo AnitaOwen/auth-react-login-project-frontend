@@ -1,4 +1,4 @@
-import ReviewAddForm from '../Components/Reviews/ReviewAddForm'
+import ReviewAddForm from "../Components/Reviews/ReviewAddForm";
 import "./Form.css";
 
 const NewForm = ({ reviews, setReviews }) => {

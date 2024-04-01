@@ -4,7 +4,7 @@
   border: 2px solid black;
   border-radius: 20px;
   width: 60%;
-  height: 400px;
+  height: 420px;
   margin-top: 15%;
   background-color: palegoldenrod;
   place-items: center;
@@ -47,21 +47,22 @@
   color: white;
 }
 
-.rating-input {
+/* .rating-input {
   display: inline;
-  width: 70px;
+  grid-template-columns: 3fr 1fr;
+  width: 30px;
   height: 50px;
   text-align: center;
   font-size: 16px;
   border-radius: 10px;
   padding-bottom: 20px;
-}
+} */
 
-.rating-input input {
+/* .rating-input input {
   margin-top: 20px;
   width: 200px;
   margin-left: 20px;
-}
+} */
 
 section {
   margin-bottom: 50px;
