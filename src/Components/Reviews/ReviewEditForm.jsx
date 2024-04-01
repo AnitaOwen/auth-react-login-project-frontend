@@ -117,6 +117,7 @@ const ReviewEditForm = ({ setReviews, reviews }) => {
             review={updatedReview}
             setReview={setUpdatedReview}
             rating={rating}
+            setRating={setRating}
           />
           {/* <input
             id="rating"

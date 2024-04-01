@@ -4,12 +4,7 @@ import "./Form.css";
 const NewForm = ({ reviews, setReviews }) => {
   return (
     <div>
-      <ReviewAddForm
-        reviews={reviews}
-        setReviews={setReviews}
-        // rating={rating}
-        // setRating={setRating}
-      />
+      <ReviewAddForm reviews={reviews} setReviews={setReviews} />
     </div>
   );
 };

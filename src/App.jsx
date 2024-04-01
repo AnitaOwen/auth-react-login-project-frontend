@@ -17,7 +17,6 @@ import LandingPage from "./Pages/LandingPage";
 function App() {
   const [reviews, setReviews] = useState([]);
   const [toggleLogin, setToggleLogin] = useState(false);
-  // const [rating, setRating] = useState("");
 
   return (
     <>
@@ -43,25 +42,11 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route
             path="/teapots/:teapot_id/new"
-            element={
-              <NewForm
-                reviews={reviews}
-                setReviews={setReviews}
-                // rating={rating}
-                // setRating={setRating}
-              />
-            }
+            element={<NewForm reviews={reviews} setReviews={setReviews} />}
           />
           <Route
             path="/teapots/:teapot_id/edit/:review_id"
-            element={
-              <EditForm
-                reviews={reviews}
-                setReviews={setReviews}
-                // rating={rating}
-                // setRating={setRating}
-              />
-            }
+            element={<EditForm reviews={reviews} setReviews={setReviews} />}
           />
         </Route>
       </Routes>

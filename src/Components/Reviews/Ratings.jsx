@@ -1,9 +1,10 @@
 import "./Ratings.css";
 
-const Ratings = ({ review, setReview, rating }) => {
+const Ratings = ({ review, setReview, rating, setRating }) => {
   const handleRatingChange = (e) => {
     console.log(e.target.value);
     setReview({ ...review, rating: parseInt(e.target.value) });
+    setRating(parseInt(e.target.value));
   };
 
   return (
@@ -45,6 +46,7 @@ const Ratings = ({ review, setReview, rating }) => {
       />
 
       <span>&#9734; &#9734; &#9734; &#9734; &#9734;</span>
+      {/* <span className="active">{"⭐️ ".repeat(rating)}</span> */}
       <span className="active">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
     </div>
   );
